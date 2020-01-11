@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    /* The container */
+    .container1 {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default radio */
+    .container1 input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom radio */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container1:hover input~.checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio is checked, add a blue background */
+    .container1 input:checked~.checkmark {
+        background-color: #000;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container1 input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container1 .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    input {
+        border: 0;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+
+
+    @media print {
+        @page {
+            size: A4;
+            margin-left: .5in;
+            margin-right: .5in;
+            margin-top: 0in;
+            margin-bottom: 0in;
+            page-break-after: avoid;
+        }
+
+        * {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        #controls,
+        .footer,
+        .footerarea {
+            display: none;
+        }
+
+        html,
+        body {
+            /*changing width to 100% causes huge overflow and wrap*/
+            height: 100%;
+            overflow: hidden;
+            background: #FFF;
+            font-size: 9.5pt;
+        }
+
+        .custom-control {
+            padding-left: 2rem !important;
+        }
+
+        .custom-control-label {
+            font-size: 8pt;
+        }
+
+        .col {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .header {
+            margin-top: 100px;
+        }
+
+        input {
+            border: 0;
+        }
+
+        .template {
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        li {
+            margin: 0 0 10px 20px !important;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="container my-5 template">
+        <div class="row mb-3 header">
+            <div class="col-3 text-center">
+                <h1>PCS</h1>
+            </div>
+            <div class="col-7 text-center no-padding">
+                <div>Petro Environmental Consulting Services (PECS)</div>
+                <div>25 DR MLK BLVD E Belle Glade, FL 33430</div>
+                <div>T: 561.523.4161 eFax: 561.584.7288</div>
+                <div>petroenvironmental@gmail.com</div>
+            </div>
+        </div>
+
+
+        <div class="row text-center" style="background-color: black;color: white;">
+            <div class="col font-weight-bold p-2">MECHANICAL AND ELECTRONIC LINE LEAK DETECTORS PERFORMANCE TESTS</div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="row border border-dark">
+                    <div class="col-4">Facility Name:</div>
+                    <div class="col text-center"><input value="HOMESTEAD MOBILE" type="text"></div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">Address:</div>
+                    <div class="col text-center"><input value="24791, STREET, 17 SW" type="text"></div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">City, State, Zip Code:</div>
+                    <div class="col text-center"><input value="HOMESTEAD, FL, 33565" type="text"></div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">Facility I.D. #</div>
+                    <div class="col text-center"><input value="" type="text"></div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">Testing company:</div>
+                    <div class="col text-center"><input value="PSR Inc." type="text"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row border border-dark">
+                    <div class="col-4">Owner:</div>
+                    <div class="col text-center">ENVAGRO</div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">Address:</div>
+                    <div class="col text-center">24791, STREET, 17 SW</div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">City, State, Zip Code:</div>
+                    <div class="col text-center"> HOMESTEAD, FL, 33565</div>
+                </div>
+                <div class="row border border-dark">
+                    <div class="col-4">Phone #:</div>
+                    <div class="col text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row border border-dark">
+                            <div class="col-4">Phone #:</div>
+                            <div class="col text-center"></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row border border-dark">
+                            <div class="col-4">Dated:</div>
+                            <div class="col text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border border-dark">
+            <div class="col">This data sheet can be used to test mechanical line leakage, This data sheet can be used to
+                test mechanical line leakage,, This data sheet can be used to test mechanical line leakage, </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 border border-dark">Line Number</div>
+            <div class="col border border-dark text-center">1</div>
+            <div class="col border border-dark text-center">2</div>
+            <div class="col border border-dark text-center">3</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Product Stored</div>
+            <div class="col border border-dark text-center">Regular</div>
+            <div class="col border border-dark text-center">Premium</div>
+            <div class="col border border-dark text-center">Diesel</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Leak Detector Manufacturer</div>
+            <div class="col border border-dark text-center">Vaporless</div>
+            <div class="col border border-dark text-center">Vaporless</div>
+            <div class="col border border-dark text-center">Vaporless</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Leak Detector Model</div>
+            <div class="col border border-dark text-center">LD220</div>
+            <div class="col border border-dark text-center">LD220</div>
+            <div class="col border border-dark text-center">LD220</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Type Of Leak Detector</div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">MLLD</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">ELLD</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">MLLD</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">ELLD</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">MLLD</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">ELLD</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">MLLD</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">ELLD</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">MLLD</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">ELLD</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">MLLD</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">ELLD</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border border-dark">
+            <div class="col font-weight-bold">MLLD (ALL PRESSURE MEASUREMENTS ARE MADE IN PSIG)</div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 border border-dark">STP Full operating Pressure</div>
+            <div class="col border border-dark text-center">27</div>
+            <div class="col border border-dark text-center">29</div>
+            <div class="col border border-dark text-center">30</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Check Valve Holding Pressure </div>
+            <div class="col border border-dark text-center">18</div>
+            <div class="col border border-dark text-center">11</div>
+            <div class="col border border-dark text-center">19</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Line resiliency (ml) line bleed back volume as measured from check
+                valve holding pressure to 0 PSIG</div>
+            <div class="col border border-dark text-center">14</div>
+            <div class="col border border-dark text-center">12</div>
+            <div class="col border border-dark text-center">11</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Step through time in seconds (time the MLLD hesitates at metering
+                pressure before going to full operating pressure as measured from 0 PSIG with no leak induced on the
+                line
+            </div>
+            <div class="col border border-dark text-center">4 sec </div>
+            <div class="col border border-dark text-center">3 sec</div>
+            <div class="col border border-dark text-center">3 sec</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Metering Pressure STP Pressure when simulated leak rate 3gph at
+                10psig) </div>
+            <div class="col border border-dark text-center">2.8</div>
+            <div class="col border border-dark text-center">1.5</div>
+            <div class="col border border-dark text-center">2.1</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Opening time in seconds (the time MLLD opens to allow full pressure
+                after simulated leak is induced) </div>
+            <div class="col border border-dark text-center">5</div>
+            <div class="col border border-dark text-center">4</div>
+            <div class="col border border-dark text-center">4</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Does the STP pressure remain at or below the metering for atleast 60
+                seconds when the simulated leak is induced?
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Does the leak detector reset trip when line pressure is bled off to
+                zero psig?
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Does the STP properly cycle on/off under normal fuel system operation
+                conditions?
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border border-dark">
+            <div class="col">A "No" answer to either above question indicates the MLLD fails the test.</div>
+        </div>
+
+        <div class="row border border-dark">
+            <div class="col font-weight-bold">ELLD (All Pressure measurements are made in PSI</div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 border border-dark">STP full operating Pressure </div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">How many test cycles are observed before alarm/shutdown occurs? </div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Does the stimulated leak cause an alarm?</div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">A "No" answer to either above question indicates the ELLD fails the
+                test.</div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+            <div class="col border border-dark text-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 border border-dark">Does the stimulated leak cause an STP Shutdown?</div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col border border-dark">
+                <div class="row">
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio col-6">
+                        <input type="radio" class="custom-control-input" id="customControlAutosizing">
+                        <label class="custom-control-label" for="customControlAutosizing">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-3 border border-dark">Test Result</div>
+            <div class="col border border-dark">
+                <div class="radio"><input type="radio" value="">Pass</div>
+                <div class="radio"><input type="radio" value="">Fail</div>
+            </div>
+            <div class="col border border-dark">
+                <div class="radio"><input type="radio" value="">Pass</div>
+                <div class="radio"><input type="radio" value="">Fail</div>
+            </div>
+            <div class="col border border-dark">
+                <div class="radio"><input type="radio" value="">Pass</div>
+                <div class="radio"><input type="radio" value="">Fail</div>
+            </div>
+            <div class="col border border-dark">
+                <div class="radio"><input type="radio" value="">Pass</div>
+                <div class="radio"><input type="radio" value="">Fail</div>
+            </div>
+            <div class="col border border-dark">
+                <div class="radio"><input type="radio" value="">Pass</div>
+                <div class="radio"><input type="radio" value="">Fail</div>
+            </div>
+            <div class="col border border-dark">
+                <div class="radio"><input type="radio" value="">Pass</div>
+                <div class="radio"><input type="radio" value="">Fail</div>
+            </div>
+        </div>
+
+        <div class="row border border-dark">
+            <div class="col">Comments: <span class="font-weight-bold">Milds Working Properly </span> </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                <div class="row">
+                    <div class="col-4">Tester's Name (print):</div>
+                    <div class="col border-dark border-bottom">JAUNDRY JAMES</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-4">Tester's Signature:</div>
+                    <div class="col border-dark border-bottom"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
